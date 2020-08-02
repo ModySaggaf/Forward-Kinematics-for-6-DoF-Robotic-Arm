@@ -1,0 +1,39 @@
+a3=20;
+a4=15;
+d1=10;
+d5=5;
+ 
+t1=0.5;
+t2=0.5;
+t3=0.5;
+t4=0.5;
+t5=0.5;
+t6=0.5;
+ 
+%Article’s Solution
+px1 = a4*cos(t1+t2)*cos(t3)*cos(t4) 
+- a4*cos(t1+t2)*sin(t3)*sin(t4) + sin(t1+t2)*d5 
++ a3*cos(t1+t2)*cos(t3);
+
+py1 = a4*sin(t1+t2)*cos(t3)*cos(t4) 
+- a4*sin(t1+t2)*sin(t3)*sin(t4) - cos(t1+t2)*d5 
++ a3*sin(t1+t2)*cos(t3);
+pz1 = a4*sin(t3)*cos(t4) + a4*cos(t3)*sin(t4) + a3*sin(t3) + d1;
+ 
+
+%My Solution
+px2 = d5*(cos(t1)*sin(t2) + cos(t2)*sin(t1)) 
+- cos(t3)*a3*(sin(t1)*sin(t2) - cos(t1)*cos(t2)) 
+- cos(t3)*cos(t4)*a4*(sin(t1)*sin(t2) - cos(t1)*cos(t2)) 
++ sin(t3)*sin(t4)*a4*(sin(t1)*sin(t2) - cos(t1)*cos(t2));
+
+py2 = d5*(sin(t1)*sin(t2) - cos(t1)*cos(t2)) 
++ cos(t3)*a3*(cos(t1)*sin(t2) + cos(t2)*sin(t1)) 
++ cos(t3)*cos(t4)*a4*(cos(t1)*sin(t2) + cos(t2)*sin(t1)) 
+– sin(t3)*sin(t4)*a4*(cos(t1)*sin(t2) + cos(t2)*sin(t1));
+
+pz2 = d1 + sin(t3)*a3 + cos(t3)*sin(t4)*a4 
++ cos(t4)*sin(t3)*a4;
+ 
+fprintf(" Article Solution \n X= %1.10f \n Y= %1.10f \n Z= %1.10f \n \n", px1, py1, pz1);
+fprintf(" My Solution \n X= %1.10f \n Y= %1.10f \n Z= %1.10f \n", px2, py2, pz2);
