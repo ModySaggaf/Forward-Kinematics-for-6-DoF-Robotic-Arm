@@ -35,34 +35,34 @@ syms d1 d5;
  
 %Matrices
 A1=[C1 -S1 0 0
-    S1 C1  0 0
-    0  0  1  d1
-    0  0  0  1];
+S1 C1  0 0
+0  1  d1
+0  0  0  1];
  
 A2=[C2 0 S2  0
-    S2 0 -C2 0
-    0  1  0  0
-    0  0  0  1];
+S2 0 -C2 0
+0  1  0  0
+0  0  0  1];
  
 A3=[C3 -S3 0 a3*C3
-    S3 C3  0 a3*S3
-    0  0  1  0
-    0  0  0  1];
+S3 C3  0 a3*S3
+0  0  1  0
+0  0  0  1];
  
 A4=[C4 -S4 0 a4*C4
-    S4 C4 0 a4*S4
-    0  0  1  0
-    0  0  0  1];
+S4 C4 0 a4*S4
+0  0  1  0
+0  0  0  1];
  
 A5=[C5  0 -S5  0
-    S5  0  C5  0
-    0  -1  0  d5
-    0   0  0  1];
+S5  0  C5  0
+0  -1  0  d5
+0   0  0  1];
  
 A6=[C6 -S6  0  0
-    S6 C6   0  0
-    0   0   1  0
-    0   0   0  1];
+S6 C6   0  0
+0   0   1  0
+0   0   0  1];
  
 T=A1*A2*A3*A4*A5*A6 %Matrices are multiplied
  
@@ -78,12 +78,13 @@ oz=T(3,2);
 ax=T(1,3);
 ay=T(2,3);
 az=T(3,3);
- 
- 
+  
 %End Effector's Cartesian Coordinates
 px=T(1,4);
 py=T(2,4);
 pz=T(3,4);
+
+
 
 ## Step 4: Get the end effector’s position from the total transformation matrix
 
