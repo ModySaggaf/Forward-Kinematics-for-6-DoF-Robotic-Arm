@@ -24,12 +24,12 @@
 
 ## Step 2: Find the D-H parameters stated earlier from the block diagram for one joint, and substitute them in the transformation matrix
 
-![](Steps Pictures/TransformationMatrix.png)
+![](Steps%20Pictures/TransformationMatrix.png)
 
 
 ## Step 3: Repeat the second step for the rest of the joints and multiply the transformation matrices to find the total transformation matrix
 
-![](Steps Pictures/TotalTransformationMatrix.png)
+![](Steps%20Pictures/TotalTransformationMatrix.png)
  
 
 ### Matrices Multiplication using MATLAB
@@ -126,7 +126,7 @@ pz=T(3,4);
 
 #### For getting the end effector’s coordinates from the matrix, the variables px, py, and pz are typed in the MATLAB command window to get x, y and z coordinated, respectively.
 
-![](Steps Pictures/EndEffector’sPosition.png)
+![](Steps%20Pictures/EndEffector’sPosition.png)
 
 
 ## Step 5: Arduino Code
@@ -134,22 +134,22 @@ pz=T(3,4);
 
 
 
-![](Steps Pictures/ArduinoCodePart1.png)
+![](Steps%20Pictures/ArduinoCodePart1.png)
 #### At first, the Servo library was included, and the servo motors were identified. Then the angles -in radians- and distances were specified representing the input, and the unknown parameters, the end effector’s position, represent the output.
 
 
 
-![](Steps Pictures/ArduinoCodePart2.png)
+![](Steps%20Pictures/ArduinoCodePart2.png)
 #### After that, the servo motors were attached to the Arduino’s digital pins, and the equations used to get the end effector’s position.
 
 
 
-![](Steps Pictures/ArduinoCodePart3.png)
+![](Steps%20Pictures/ArduinoCodePart3.png)
 #### In order to show the output, the Serial.print function was used including “DEC” function to show all decimals of each coordinate value.
 
 
 
-![](Steps Pictures/ArduinoSerialMonitor.png)
+![](Steps%20Pictures/ArduinoSerialMonitor.png)
 #### The output is shown in the serial monitor which represents the end effector’s X, Y and Z coordinates. 
 
 
@@ -184,7 +184,7 @@ pz2 = d1 + sin(t3)*a3 + cos(t3)*sin(t4)*a4 + cos(t4)*sin(t3)*a4;
 fprintf(" Article Solution \n X= %1.10f \n Y= %1.10f \n Z= %1.10f \n \n", px1, py1, pz1);
 fprintf(" My Solution \n X= %1.10f \n Y= %1.10f \n Z= %1.10f \n", px2, py2, pz2);
 
-![](Steps Pictures/SolutionComparison.png)
+![](Steps%20Pictures/SolutionComparison.png)
 
 #### As shown in the figure above, the results were identical for the forward kinematics analysis with fixed angles, lengths and distances. In order to assure that the solution is correct, an inverse kinematics must be performed and with the forward kinematics results as an input to get the angles of rotation as an output.
 
