@@ -98,22 +98,27 @@ S6 C6   0  0
 T=A1*A2*A3*A4*A5*A6 %Matrices are multiplied
  
 %Known Rotational Paramters
+
 nx=T(1,1);
 ny=T(2,1);
 nz=T(3,1);
- 
+
 ox=T(1,2);
 oy=T(2,2);
 oz=T(3,2);
- 
+
 ax=T(1,3);
 ay=T(2,3);
 az=T(3,3);
   
 %End Effector's Cartesian Coordinates
+
 px=T(1,4);
+
 py=T(2,4);
+
 pz=T(3,4);
+
 
 
 
