@@ -19,12 +19,17 @@
 
 ## Step 1: Draw the modeling block diagram following the Denavit–Hartenberg Rules
 
- 
+![](Steps Pictures/BlockModellingDiagram.png)
+
 
 ## Step 2: Find the D-H parameters stated earlier from the block diagram for one joint, and substitute them in the transformation matrix
 
+![](Steps Pictures/TransformationMatrix.png)
+
+
 ## Step 3: Repeat the second step for the rest of the joints and multiply the transformation matrices to find the total transformation matrix
 
+![](Steps Pictures/TotalTransformationMatrix.png)
  
 
 ### Matrices Multiplication using MATLAB
@@ -90,23 +95,32 @@ pz=T(3,4);
 
 #### For getting the end effector’s coordinates from the matrix, the variables px, py, and pz are typed in the MATLAB command window to get x, y and z coordinated, respectively.
 
- 
+![](Steps Pictures/EndEffector’sPosition.png)
 
 
 ## Step 5: Arduino Code
 #### This is the final step to complete this task, which is writing the code with specifying the angles and distances as constants and resulting the position as an output in the serial monitor. [1]
 
- 
 
+
+![](Steps Pictures/ArduinoCodePart1.png)
 #### At first, the Servo library was included, and the servo motors were identified. Then the angles -in radians- and distances were specified representing the input, and the unknown parameters, the end effector’s position, represent the output.
 
 
- 
+
+![](Steps Pictures/ArduinoCodePart2.png)
 #### After that, the servo motors were attached to the Arduino’s digital pins, and the equations used to get the end effector’s position.
- 
+
+
+
+![](Steps Pictures/ArduinoCodePart3.png)
 #### In order to show the output, the Serial.print function was used including “DEC” function to show all decimals of each coordinate value.
- 
+
+
+
+![](Steps Pictures/ArduinoSerialMonitor.png)
 #### The output is shown in the serial monitor which represents the end effector’s X, Y and Z coordinates. 
+
 
 ## Step 6: Checking Results
 #### An article was used as a reference [2] and the results were compared using MATLAB code.
@@ -124,29 +138,17 @@ t5=0.5;
 t6=0.5;
  
 %Article’s Solution
-px1 = a4*cos(t1+t2)*cos(t3)*cos(t4) 
-- a4*cos(t1+t2)*sin(t3)*sin(t4) + sin(t1+t2)*d5 
-+ a3*cos(t1+t2)*cos(t3);
-
-py1 = a4*sin(t1+t2)*cos(t3)*cos(t4) 
-- a4*sin(t1+t2)*sin(t3)*sin(t4) - cos(t1+t2)*d5 
-+ a3*sin(t1+t2)*cos(t3);
+px1 = a4*cos(t1+t2)*cos(t3)*cos(t4) - a4*cos(t1+t2)*sin(t3)*sin(t4) + sin(t1+t2)*d5 + a3*cos(t1+t2)*cos(t3);
+py1 = a4*sin(t1+t2)*cos(t3)*cos(t4) - a4*sin(t1+t2)*sin(t3)*sin(t4) - cos(t1+t2)*d5 + a3*sin(t1+t2)*cos(t3);
 pz1 = a4*sin(t3)*cos(t4) + a4*cos(t3)*sin(t4) + a3*sin(t3) + d1;
  
 
 %My Solution
-px2 = d5*(cos(t1)*sin(t2) + cos(t2)*sin(t1)) 
-- cos(t3)*a3*(sin(t1)*sin(t2) - cos(t1)*cos(t2)) 
-- cos(t3)*cos(t4)*a4*(sin(t1)*sin(t2) - cos(t1)*cos(t2)) 
-+ sin(t3)*sin(t4)*a4*(sin(t1)*sin(t2) - cos(t1)*cos(t2));
+px2 = d5*(cos(t1)*sin(t2) + cos(t2)*sin(t1)) - cos(t3)*a3*(sin(t1)*sin(t2) - cos(t1)*cos(t2)) - cos(t3)*cos(t4)*a4*(sin(t1)*sin(t2) - cos(t1)*cos(t2)) + sin(t3)*sin(t4)*a4*(sin(t1)*sin(t2) - cos(t1)*cos(t2));
 
-py2 = d5*(sin(t1)*sin(t2) - cos(t1)*cos(t2)) 
-+ cos(t3)*a3*(cos(t1)*sin(t2) + cos(t2)*sin(t1)) 
-+ cos(t3)*cos(t4)*a4*(cos(t1)*sin(t2) + cos(t2)*sin(t1)) 
-– sin(t3)*sin(t4)*a4*(cos(t1)*sin(t2) + cos(t2)*sin(t1));
+py2 = d5*(sin(t1)*sin(t2) - cos(t1)*cos(t2)) + cos(t3)*a3*(cos(t1)*sin(t2) + cos(t2)*sin(t1)) + cos(t3)*cos(t4)*a4*(cos(t1)*sin(t2) + cos(t2)*sin(t1)) – sin(t3)*sin(t4)*a4*(cos(t1)*sin(t2) + cos(t2)*sin(t1));
 
-pz2 = d1 + sin(t3)*a3 + cos(t3)*sin(t4)*a4 
-+ cos(t4)*sin(t3)*a4;
+pz2 = d1 + sin(t3)*a3 + cos(t3)*sin(t4)*a4 + cos(t4)*sin(t3)*a4;
  
 fprintf(" Article Solution \n X= %1.10f \n Y= %1.10f \n Z= %1.10f \n \n", px1, py1, pz1);
 fprintf(" My Solution \n X= %1.10f \n Y= %1.10f \n Z= %1.10f \n", px2, py2, pz2);
