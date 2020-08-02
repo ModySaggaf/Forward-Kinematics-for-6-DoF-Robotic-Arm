@@ -1,0 +1,77 @@
+#include <Servo.h>
+Servo S1; Servo S2; Servo S3; Servo S4; Servo S5; Servo S6;
+
+//Given Parameters
+
+  //Lenghts and distances
+  float a3=20;
+  float a4=15;
+  float d1=10;
+  float d5=5;
+
+  //Angles
+  float t1=0.5;
+  float t2=0.5;
+  float t3=0.5;
+  float t4=0.5;
+  float t5=0.5;
+  float t6=0.5;
+  float pi=3.141592654; //Pi, the mathmatical constant
+
+//Known Orientation Parameters
+float nx; float ny; float nz;
+float ox; float oy; float oz;
+float ax; float ay; float az;
+
+  
+//Unknown Position Parameters
+float px; //End effector's X coordinate
+float py; //End effector's Y coordinate
+float pz; //End effector's Z coordinate
+
+void setup()
+{
+//Attaching Servo Motors to the digital pins
+    S1.attach(2);
+	S2.attach(3);
+  	S3.attach(4);
+	S4.attach(5);
+	S5.attach(6);
+	S6.attach(7);
+
+//Orientation Parameters
+	nx = -cos(t6)*(cos(t5)*(cos(t3)*cos(t4)*(sin(t1)*sin(t2) - cos(t1)*cos(t2)) - sin(t3)*sin(t4)*(sin(t1)*sin(t2) - cos(t1)*cos(t2))) - sin(t5)*(cos(t3)*sin(t4)*(sin(t1)*sin(t2) - cos(t1)*cos(t2)) + cos(t4)*sin(t3)*(sin(t1)*sin(t2) - cos(t1)*cos(t2)))) - sin(t6)*(cos(t1)*sin(t2) + cos(t2)*sin(t1));
+	ny = cos(t6)*(cos(t5)*(cos(t3)*cos(t4)*(cos(t1)*sin(t2) + cos(t2)*sin(t1)) - sin(t3)*sin(t4)*(cos(t1)*sin(t2) + cos(t2)*sin(t1))) - sin(t5)*(cos(t3)*sin(t4)*(cos(t1)*sin(t2) + cos(t2)*sin(t1)) + cos(t4)*sin(t3)*(cos(t1)*sin(t2) + cos(t2)*sin(t1)))) - sin(t6)*(sin(t1)*sin(t2) - cos(t1)*cos(t2));
+	nz = cos(t6)*(cos(t5)*(cos(t3)*sin(t4) + cos(t4)*sin(t3)) - sin(t5)*(sin(t3)*sin(t4) - cos(t3)*cos(t4)));
+  
+	ox = sin(t6)*(cos(t5)*(cos(t3)*cos(t4)*(sin(t1)*sin(t2) - cos(t1)*cos(t2)) - sin(t3)*sin(t4)*(sin(t1)*sin(t2) - cos(t1)*cos(t2))) - sin(t5)*(cos(t3)*sin(t4)*(sin(t1)*sin(t2) - cos(t1)*cos(t2)) + cos(t4)*sin(t3)*(sin(t1)*sin(t2) - cos(t1)*cos(t2)))) - cos(t6)*(cos(t1)*sin(t2) + cos(t2)*sin(t1));
+	oy = - sin(t6)*(cos(t5)*(cos(t3)*cos(t4)*(cos(t1)*sin(t2) + cos(t2)*sin(t1)) - sin(t3)*sin(t4)*(cos(t1)*sin(t2) + cos(t2)*sin(t1))) - sin(t5)*(cos(t3)*sin(t4)*(cos(t1)*sin(t2) + cos(t2)*sin(t1)) + cos(t4)*sin(t3)*(cos(t1)*sin(t2) + cos(t2)*sin(t1)))) - cos(t6)*(sin(t1)*sin(t2) - cos(t1)*cos(t2));
+	oz = -sin(t6)*(cos(t5)*(cos(t3)*sin(t4) + cos(t4)*sin(t3)) - sin(t5)*(sin(t3)*sin(t4) - cos(t3)*cos(t4)));
+
+	ax = cos(t5)*(cos(t3)*sin(t4)*(sin(t1)*sin(t2) - cos(t1)*cos(t2)) + cos(t4)*sin(t3)*(sin(t1)*sin(t2) - cos(t1)*cos(t2))) + sin(t5)*(cos(t3)*cos(t4)*(sin(t1)*sin(t2) - cos(t1)*cos(t2)) - sin(t3)*sin(t4)*(sin(t1)*sin(t2) - cos(t1)*cos(t2)));
+	ay = - cos(t5)*(cos(t3)*sin(t4)*(cos(t1)*sin(t2) + cos(t2)*sin(t1)) + cos(t4)*sin(t3)*(cos(t1)*sin(t2) + cos(t2)*sin(t1))) - sin(t5)*(cos(t3)*cos(t4)*(cos(t1)*sin(t2) + cos(t2)*sin(t1)) - sin(t3)*sin(t4)*(cos(t1)*sin(t2) + cos(t2)*sin(t1)));
+	az = - cos(t5)*(sin(t3)*sin(t4) - cos(t3)*cos(t4)) - sin(t5)*(cos(t3)*sin(t4) + cos(t4)*sin(t3));
+
+  
+//Calculating the unkown parameters using equations
+	px = d5*(cos(t1)*sin(t2) + cos(t2)*sin(t1)) - cos(t3)*a3*(sin(t1)*sin(t2) - cos(t1)*cos(t2)) - cos(t3)*cos(t4)*a4*(sin(t1)*sin(t2) - cos(t1)*cos(t2)) + sin(t3)*sin(t4)*a4*(sin(t1)*sin(t2) - cos(t1)*cos(t2));
+	py = d5*(sin(t1)*sin(t2) - cos(t1)*cos(t2)) + cos(t3)*a3*(cos(t1)*sin(t2) + cos(t2)*sin(t1)) + cos(t3)*cos(t4)*a4*(cos(t1)*sin(t2) + cos(t2)*sin(t1)) - sin(t3)*sin(t4)*a4*(cos(t1)*sin(t2) + cos(t2)*sin(t1));
+	pz = d1 + sin(t3)*a3 + cos(t3)*sin(t4)*a4 + cos(t4)*sin(t3)*a4;
+ 
+  
+//Printing the end effector's X, Y & Z coordinates
+  	Serial.begin(9600);  
+    Serial.print("X= "); Serial.println(px,DEC);
+    Serial.print("Y= "); Serial.println(py,DEC);
+    Serial.print("Z= "); Serial.println(pz,DEC);
+}
+
+void loop()
+{
+  S1.write(t1*(180/pi));
+  S2.write(t2*(180/pi));
+  S3.write(t3*(180/pi));
+  S4.write(t4*(180/pi));
+  S5.write(t5*(180/pi));
+  S6.write(t6*(180/pi));
+}
