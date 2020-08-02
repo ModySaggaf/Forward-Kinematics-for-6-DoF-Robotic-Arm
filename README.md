@@ -34,6 +34,7 @@
 
 ### Matrices Multiplication using MATLAB
 syms C1 C2 C3 C4 C5 C6;
+
 syms S1 S2 S3 S4 S5 S6;
 syms a3 a4;
 syms d1 d5;
