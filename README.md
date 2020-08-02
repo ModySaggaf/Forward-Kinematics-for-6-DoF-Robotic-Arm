@@ -1,6 +1,6 @@
 # Forward-Kinematics-for-6-DoF-Robotic-Arm
 
-# Overview
+## Overview
 #### Previously, in forward kinematic analysis for 3 degrees of freedom robotic arm, trigonometric functions were used to get the end effector’s position considering joints angles. Imagine if we had 6 degrees of freedom, would it be this simple to be solved this way? Of course it would’ve been so complicated. 
 #### This task is about doing the forward kinematic analysis for 6 DoF robotic arm with using the Denavit-Hartenberg Convention. In order to use this D-H convention, specific parameters need to be used, and three rules must be followed.
 
@@ -63,9 +63,13 @@
 ## References
 
 [1] 	M. Alsaggaf, "6 DoF Robotic Arm Forward Kinematics," TinkerCAD, 28 07 2020. [Online]. Available: https://www.tinkercad.com/things/56EDMEckwu9.
-[2] 	A. N. A.-A. Hanan A.R. Akkar, "Kinematics Analysis and Modeling of 6 Degree of Freedom Robotic Arm from DFROBOT on Labview," Research Gate, 07 06 2016. [Online]. Available: https://www.researchgate.net/publication/310389891_Kinematics_Analysis_and_Modeling_of_6_Degree_of_Freedom_Robotic_Arm_from_DFROBOT_on_Labview. [Accessed 13 07 2020].
-[3] 	A. Sodemann, "Robotics 1 U1 (Kinematics) S3 (Rotation Matrices) P4 (6-DoF Example and Error Checking)," YouTube, 27 08 2017. [Online]. Available: https://youtu.be/KslFPohHkxA. [Accessed 24 07 2020].
-[4] 	milfordrobotics, "Forward and Inverse Kinematics Part 1," YouTube, 03 08 2011. [Online]. Available: https://youtu.be/VjsuBT4Npvk. [Accessed 24 07 2020].
-[5] 	milfordrobotics, "Forward and Inverse Kinematics Part 2," YouTube, 04 08 2011. [Online]. Available: https://youtu.be/3ZcYSKVDlOc. [Accessed 24 07 2020].
-[6] 	"Create Symbolic Numbers, Variables, and Expressions," MathWorks, [Online]. Available: https://www.mathworks.com/help/symbolic/create-symbolic-numbers-variables-and-expressions.html. [Accessed 27 07 2020].
 
+[2] 	A. N. A.-A. Hanan A.R. Akkar, "Kinematics Analysis and Modeling of 6 Degree of Freedom Robotic Arm from DFROBOT on Labview," Research Gate, 07 06 2016. [Online]. Available: https://www.researchgate.net/publication/310389891_Kinematics_Analysis_and_Modeling_of_6_Degree_of_Freedom_Robotic_Arm_from_DFROBOT_on_Labview. [Accessed 13 07 2020].
+
+[3] 	A. Sodemann, "Robotics 1 U1 (Kinematics) S3 (Rotation Matrices) P4 (6-DoF Example and Error Checking)," YouTube, 27 08 2017. [Online]. Available: https://youtu.be/KslFPohHkxA. [Accessed 24 07 2020].
+
+[4] 	milfordrobotics, "Forward and Inverse Kinematics Part 1," YouTube, 03 08 2011. [Online]. Available: https://youtu.be/VjsuBT4Npvk. [Accessed 24 07 2020].
+
+[5] 	milfordrobotics, "Forward and Inverse Kinematics Part 2," YouTube, 04 08 2011. [Online]. Available: https://youtu.be/3ZcYSKVDlOc. [Accessed 24 07 2020].
+
+[6] 	"Create Symbolic Numbers, Variables, and Expressions," MathWorks, [Online]. Available: https://www.mathworks.com/help/symbolic/create-symbolic-numbers-variables-and-expressions.html. [Accessed 27 07 2020].
