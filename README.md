@@ -19,7 +19,7 @@
 
 ## Step 1: Draw the modeling block diagram following the Denavit–Hartenberg Rules
 
-![](Steps Pictures/BlockModellingDiagram.png)
+![](Steps%20Pictures/BlockModellingDiagram.png)
 
 
 ## Step 2: Find the D-H parameters stated earlier from the block diagram for one joint, and substitute them in the transformation matrix
