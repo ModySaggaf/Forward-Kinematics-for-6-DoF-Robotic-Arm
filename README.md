@@ -34,41 +34,66 @@
 
 ### Matrices Multiplication using MATLAB
 syms C1 C2 C3 C4 C5 C6;
+
 syms S1 S2 S3 S4 S5 S6;
+
 syms a3 a4;
 
 syms d1 d5;
 
 %Matrices
 A1=[C1 -S1 0 0
+
 S1 C1  0 0
 0  1  d1
+
 0  0  0  1];
+ 
  
 A2=[C2 0 S2  0
+
 S2 0 -C2 0
+
 0  1  0  0
+
 0  0  0  1];
+ 
  
 A3=[C3 -S3 0 a3*C3
+
 S3 C3  0 a3*S3
+
 0  0  1  0
+
 0  0  0  1];
+
  
 A4=[C4 -S4 0 a4*C4
+
 S4 C4 0 a4*S4
+
 0  0  1  0
+
 0  0  0  1];
+
  
 A5=[C5  0 -S5  0
+
 S5  0  C5  0
+
 0  -1  0  d5
+
 0   0  0  1];
+
  
 A6=[C6 -S6  0  0
+
 S6 C6   0  0
+
 0   0   1  0
+
 0   0   0  1];
+
  
 T=A1*A2*A3*A4*A5*A6 %Matrices are multiplied
  
