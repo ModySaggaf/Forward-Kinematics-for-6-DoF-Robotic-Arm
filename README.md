@@ -45,9 +45,9 @@
 
 
  
-##### After that, the servo motors were attached to the Arduino’s digital pins, and the equations used to get the end effector’s position.
+#### After that, the servo motors were attached to the Arduino’s digital pins, and the equations used to get the end effector’s position.
  
-##### In order to show the output, the Serial.print function was used including “DEC” function to show all decimals of each coordinate value.
+#### In order to show the output, the Serial.print function was used including “DEC” function to show all decimals of each coordinate value.
  
 #### The output is shown in the serial monitor which represents the end effector’s X, Y and Z coordinates. 
 
@@ -60,5 +60,12 @@
 #### As shown in the figure above, the results were identical for the forward kinematics analysis with fixed angles, lengths and distances. In order to assure that the solution is correct, an inverse kinematics must be performed and with the forward kinematics results as an input to get the angles of rotation as an output.
 
 
+## References
 
+[1] 	M. Alsaggaf, "6 DoF Robotic Arm Forward Kinematics," TinkerCAD, 28 07 2020. [Online]. Available: https://www.tinkercad.com/things/56EDMEckwu9.
+[2] 	A. N. A.-A. Hanan A.R. Akkar, "Kinematics Analysis and Modeling of 6 Degree of Freedom Robotic Arm from DFROBOT on Labview," Research Gate, 07 06 2016. [Online]. Available: https://www.researchgate.net/publication/310389891_Kinematics_Analysis_and_Modeling_of_6_Degree_of_Freedom_Robotic_Arm_from_DFROBOT_on_Labview. [Accessed 13 07 2020].
+[3] 	A. Sodemann, "Robotics 1 U1 (Kinematics) S3 (Rotation Matrices) P4 (6-DoF Example and Error Checking)," YouTube, 27 08 2017. [Online]. Available: https://youtu.be/KslFPohHkxA. [Accessed 24 07 2020].
+[4] 	milfordrobotics, "Forward and Inverse Kinematics Part 1," YouTube, 03 08 2011. [Online]. Available: https://youtu.be/VjsuBT4Npvk. [Accessed 24 07 2020].
+[5] 	milfordrobotics, "Forward and Inverse Kinematics Part 2," YouTube, 04 08 2011. [Online]. Available: https://youtu.be/3ZcYSKVDlOc. [Accessed 24 07 2020].
+[6] 	"Create Symbolic Numbers, Variables, and Expressions," MathWorks, [Online]. Available: https://www.mathworks.com/help/symbolic/create-symbolic-numbers-variables-and-expressions.html. [Accessed 27 07 2020].
 
