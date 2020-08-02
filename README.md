@@ -28,6 +28,62 @@
  
 
 ### Matrices Multiplication using MATLAB
+syms C1 C2 C3 C4 C5 C6;
+syms S1 S2 S3 S4 S5 S6;
+syms a3 a4;
+syms d1 d5;
+ 
+%Matrices
+A1=[C1 -S1 0 0
+    S1 C1  0 0
+    0  0  1  d1
+    0  0  0  1];
+ 
+A2=[C2 0 S2  0
+    S2 0 -C2 0
+    0  1  0  0
+    0  0  0  1];
+ 
+A3=[C3 -S3 0 a3*C3
+    S3 C3  0 a3*S3
+    0  0  1  0
+    0  0  0  1];
+ 
+A4=[C4 -S4 0 a4*C4
+    S4 C4 0 a4*S4
+    0  0  1  0
+    0  0  0  1];
+ 
+A5=[C5  0 -S5  0
+    S5  0  C5  0
+    0  -1  0  d5
+    0   0  0  1];
+ 
+A6=[C6 -S6  0  0
+    S6 C6   0  0
+    0   0   1  0
+    0   0   0  1];
+ 
+T=A1*A2*A3*A4*A5*A6 %Matrices are multiplied
+ 
+%Known Rotational Paramters
+nx=T(1,1);
+ny=T(2,1);
+nz=T(3,1);
+ 
+ox=T(1,2);
+oy=T(2,2);
+oz=T(3,2);
+ 
+ax=T(1,3);
+ay=T(2,3);
+az=T(3,3);
+ 
+ 
+%End Effector's Cartesian Coordinates
+px=T(1,4);
+py=T(2,4);
+pz=T(3,4);
 
 ## Step 4: Get the end effector’s position from the total transformation matrix
 
@@ -54,8 +110,47 @@
 ## Step 6: Checking Results
 #### An article was used as a reference [2] and the results were compared using MATLAB code.
 
+a3=20;
+a4=15;
+d1=10;
+d5=5;
+ 
+t1=0.5;
+t2=0.5;
+t3=0.5;
+t4=0.5;
+t5=0.5;
+t6=0.5;
+ 
+%Article’s Solution
+px1 = a4*cos(t1+t2)*cos(t3)*cos(t4) 
+- a4*cos(t1+t2)*sin(t3)*sin(t4) + sin(t1+t2)*d5 
++ a3*cos(t1+t2)*cos(t3);
 
+py1 = a4*sin(t1+t2)*cos(t3)*cos(t4) 
+- a4*sin(t1+t2)*sin(t3)*sin(t4) - cos(t1+t2)*d5 
++ a3*sin(t1+t2)*cos(t3);
+pz1 = a4*sin(t3)*cos(t4) + a4*cos(t3)*sin(t4) + a3*sin(t3) + d1;
+ 
 
+%My Solution
+px2 = d5*(cos(t1)*sin(t2) + cos(t2)*sin(t1)) 
+- cos(t3)*a3*(sin(t1)*sin(t2) - cos(t1)*cos(t2)) 
+- cos(t3)*cos(t4)*a4*(sin(t1)*sin(t2) - cos(t1)*cos(t2)) 
++ sin(t3)*sin(t4)*a4*(sin(t1)*sin(t2) - cos(t1)*cos(t2));
+
+py2 = d5*(sin(t1)*sin(t2) - cos(t1)*cos(t2)) 
++ cos(t3)*a3*(cos(t1)*sin(t2) + cos(t2)*sin(t1)) 
++ cos(t3)*cos(t4)*a4*(cos(t1)*sin(t2) + cos(t2)*sin(t1)) 
+– sin(t3)*sin(t4)*a4*(cos(t1)*sin(t2) + cos(t2)*sin(t1));
+
+pz2 = d1 + sin(t3)*a3 + cos(t3)*sin(t4)*a4 
++ cos(t4)*sin(t3)*a4;
+ 
+fprintf(" Article Solution \n X= %1.10f \n Y= %1.10f \n Z= %1.10f \n \n", px1, py1, pz1);
+fprintf(" My Solution \n X= %1.10f \n Y= %1.10f \n Z= %1.10f \n", px2, py2, pz2);
+
+![](Steps Pictures/SolutionComparison.png)
 
 #### As shown in the figure above, the results were identical for the forward kinematics analysis with fixed angles, lengths and distances. In order to assure that the solution is correct, an inverse kinematics must be performed and with the forward kinematics results as an input to get the angles of rotation as an output.
 
